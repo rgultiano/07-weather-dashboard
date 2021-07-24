@@ -33,32 +33,48 @@ async function getWeather({lat, lon, name}){
         if(resp.ok){
             let data = await resp.json();
             populateCurrentWeather(data.current, name);
-      //      populateDailyWeather(data.daily);
+            populateDailyWeather(data.daily);
         } else {
             //handle error
         }
     }
 }
 
-async function populateCurrentWeather({temp, wind_speed, humidity, uvi, dt}, city_name){
+function populateDailyWeather(daily){
+    daily.forEach((weather,index)=>{
+        populateWeatherResult(weather, index);
+    })
+}
+
+function populateCurrentWeather({temp, wind_speed, humidity, uvi, dt, weather}, city_name){
     $('.current-weather .city').text(city_name);
     $('.current-weather .date').text(moment.unix(dt).format("DD/MM/YYYY"));
     $('.current-weather .temp').text(temp);
     $('.current-weather .wind').text(wind_speed);
     $('.current-weather .humidity').text(humidity);
     $('.current-weather .uvi').text(uvi);
+    $('.current-weather .wicon').attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png");
 
     //color uvi
     if(uvi < 2){
-        $('.current-weather .uvi').addClass('.low-uvi');
-        $('.current-weather .uvi').removeClass(['.med-uvi', '.high-uvi']);
+        $('.current-weather .uvi').addClass('low-uvi');
+        $('.current-weather .uvi').removeClass(['med-uvi', 'high-uvi']);
     } else if (uvi < 7){
-        $('.current-weather .uvi').addClass('.med-uvi');
-        $('.current-weather .uvi').removeClass(['.low-uvi', '.high-uvi']);
+        $('.current-weather .uvi').addClass('med-uvi');
+        $('.current-weather .uvi').removeClass(['low-uvi', 'high-uvi']);
     } else{
-        $('.current-weather .uvi').addClass('.high-uvi');
-        $('.current-weather .uvi').removeClass(['.med-uvi', '.low-uvi']);
+        $('.current-weather .uvi').addClass('high-uvi');
+        $('.current-weather .uvi').removeClass(['med-uvi', 'low-uvi']);
     }
+}
+
+function populateWeatherResult({temp, wind_speed, humidity, dt, weather}, index){
+    //populate the weather result for a given index
+    $(`.weather-result:eq(${index}) .date`).text(moment.unix(dt).format("DD/MM/YYYY"));
+    $(`.weather-result:eq(${index}) .temp`).text(temp.day);
+    $(`.weather-result:eq(${index}) .wind`).text(wind_speed);
+    $(`.weather-result:eq(${index}) .humidity`).text(humidity);
+    $(`.weather-result:eq(${index}) .wicon`).attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png");
 }
 
 function processSelect(_, {item}){

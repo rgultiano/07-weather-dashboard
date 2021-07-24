@@ -38,15 +38,24 @@ body{
     border: 1px solid black;
 }
 
+.uvi{
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 2px;
+}
 /* uvi color coding */
 .low-uvi {
     background-color: green;
+    color: white;
 }
 
 .med-uvi {
-    background-color: green;
+    background-color: orange;
+    color: white;
 }
 
 .high-uvi {
-    background-color: green;
+    background-color: red;
+    color: white;
 }
