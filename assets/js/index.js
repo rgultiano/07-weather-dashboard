@@ -7,6 +7,7 @@ const searchHistory = [];
 async function getCitySearch(request, response){
     const resp = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(request.term)}&limit=5&appid=${OW_API_KEY}`,{
         method: 'GET',
+        mode: 'no-cors'
     });
     let cities = [];
     if (resp.ok)
@@ -31,6 +32,7 @@ async function getWeather({lat, lon, name, search_name}, save_history=true){
     if(lat && lon){
         const resp = await fetch(`https://api.openweathermap.org/data/2.5/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${OW_API_KEY}`,{
             method: 'GET',
+            mode: 'no-cors'
         });
         if(resp.ok){
             let data = await resp.json();
