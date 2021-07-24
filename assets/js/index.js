@@ -1,6 +1,8 @@
 const OW_API_KEY = '84593e18a8a2a2437ba52d1559108e60';
 const selectedCity = {};
 
+const searchHistory = [];
+
 
 async function getCitySearch(request, response){
     const resp = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(request.term)}&limit=5&appid=${OW_API_KEY}`,{
@@ -25,7 +27,7 @@ async function getCitySearch(request, response){
     response(return_data);
 }
 
-async function getWeather({lat, lon, name}){
+async function getWeather({lat, lon, name, search_name}, save_history=true){
     if(lat && lon){
         const resp = await fetch(`https://api.openweathermap.org/data/2.5/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${OW_API_KEY}`,{
             method: 'GET',
@@ -34,10 +36,33 @@ async function getWeather({lat, lon, name}){
             let data = await resp.json();
             populateCurrentWeather(data.current, name);
             populateDailyWeather(data.daily);
+            if(save_history){
+                addHistory(lat, lon, name, search_name);
+                refreshHistory();
+            }
         } else {
             //handle error
         }
     }
+}
+
+function addHistory(lat, lon, name, search_name){
+    searchHistory.unshift({lat: lat, lon: lon, name: name, search_name: search_name});
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+}
+
+function refreshHistory(){
+    $('.search-history').empty();
+    searchHistory.forEach(({search_name}, index)=>{
+        let searchItemBtn = $('<button>');
+        searchItemBtn.text(search_name);
+        searchItemBtn.val(index);
+        searchItemBtn.click(function(){
+            console.log($(this).val());
+            getWeather(searchHistory[parseInt($(this).val())], false);
+        });
+        $('.search-history').append(searchItemBtn);
+    });
 }
 
 function populateDailyWeather(daily){
@@ -83,7 +108,8 @@ function processSelect(_, {item}){
     // load the selected city
     selectedCity.lat = item.lat;
     selectedCity.lon = item.lon;
-    selectedCity.name = item.name;    
+    selectedCity.name = item.name; 
+    selectedCity.search_name = item.value;   
 
     console.log(selectedCity);
     //enable button when a city is selected
@@ -109,6 +135,10 @@ function init(){
     $('.search-results .humidity').text('-');
     $('.search-results .uvi').text('-');
     $('.search-results .wicon').hide();
+
+    //load search history
+    searchHistory.unshift(...JSON.parse(localStorage.getItem('searchHistory')));
+    refreshHistory();
 }
 
 //init
