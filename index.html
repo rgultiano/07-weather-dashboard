@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <title>Weather Dashboard</title>
+    </head>
+    <body>
+        <aside class="city-search">
+            <label for="city-input">Search for a City</label>
+            <input id="city-input">
+            <button id="search">Search</button>
+            <div class="search-history">
+            </div>
+        </aside>
+        <section class="search-results">
+            <!-- mock data -->
+            <div class="current-weather">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0</span>°C</div>
+                <div>Wind: <span class="wind">6.67</span> m/sec</div>
+                <div>Humidity: <span class="humidity">46</span>%</div>
+                <div class="uv-row">UV Index: <span class="uv">0.47</span></div>
+            </div>
+            <div class="weather-result">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0F</span></div>
+                <div>Wind: <span class="wind">6.67 MPH</span></div>
+                <div>Humidity: <span class="humidity">46 %</span></div>
+                <div>UV Index: <span class="uvi">0.47</span></div>
+            </div>
+            <div class="weather-result">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0</span>°C</div>
+                <div>Wind: <span class="wind">6.67 MPH</span></div>
+                <div>Humidity: <span class="humidity">46 %</span></div>
+                <div class="uv-row">UV Index: <span class="uv">0.47</span></div>
+            </div>
+            <div class="weather-result">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0F</span></div>
+                <div>Wind: <span class="wind">6.67 MPH</span></div>
+                <div>Humidity: <span class="humidity">46 %</span></div>
+                <div class="uv-row">UV Index: <span class="uv">0.47</span></div>
+            </div>
+            <div class="weather-result">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0F</span></div>
+                <div>Wind: <span class="wind">6.67 MPH</span></div>
+                <div>Humidity: <span class="humidity">46 %</span></div>
+                <div class="uv-row">UV Index: <span class="uv">0.47</span></div>
+            </div>
+            <div class="weather-result">
+                <h2><span class="city">Atlanta</span> <span class="date">3/30/2021</span></h2> 
+                <div>Temp: <span class="temp">41.0F</span></div>
+                <div>Wind: <span class="wind">6.67 MPH</span></div>
+                <div>Humidity: <span class="humidity">46 %</span></div>
+                <div class="uv-row">UV Index: <span class="uv">0.47</span></div>
+            </div>
+        </section>
+
+        <!-- import javascript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="./assets/js/index.js"></script>
+    </body>
+</html>
