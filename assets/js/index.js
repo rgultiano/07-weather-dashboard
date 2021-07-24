@@ -139,8 +139,10 @@ function init(){
     $('.search-results .wicon').hide();
 
     //load search history
-    searchHistory.unshift(...JSON.parse(localStorage.getItem('searchHistory')));
-    refreshHistory();
+    if(localStorage.getItem('searchHistory')){
+        searchHistory.unshift(...JSON.parse(localStorage.getItem('searchHistory')));
+        refreshHistory();
+    }
 }
 
 //init
