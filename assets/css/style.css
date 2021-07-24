@@ -5,8 +5,9 @@ body{
 
 .city-search{
     display: flex;
-    width: 30%;
+    width: 15em;
     flex-direction: column;
+    padding: .3em;
 }
 
 .search-results{
@@ -27,15 +28,33 @@ body{
     position: relative;
     background-color: white;
     color: black;
+    line-height: 2em;
+    border: 1px solid black;
+    border-radius: .5em;
+    margin: .5%;
+    padding: .5em;
+}
+
+
+.current-weather h2{
+    font-size: 2em;
 }
 
 /* make the next 5 result fit in a row */
 .search-results .weather-result {
-    flex: 1 1 20%;
+    flex: 1 1 19%;
     position: relative;
     background-color: blue;
     color: white;
     border: 1px solid black;
+    margin: .5%;
+    padding: .5em;
+    border-radius: .5em;
+    height: 15em;
+    line-height: 2em;
+}
+
+.search-results .weather-result {
 }
 
 .uvi{
@@ -58,4 +77,26 @@ body{
 .high-uvi {
     background-color: red;
     color: white;
+}
+
+.search-history{
+    display: flex;
+    flex-direction: column;
+    margin-top: .5em;
+    border-top: 1px solid black;
+}
+
+.city-search button{
+    margin-top: .5em;
+    padding: .2em;
+    border-radius: .5em;
+    border: none;
+    background-color: lightgray;
+}
+
+#search {
+    background-color: lightblue;
+    color: white;
+    border: none;
+    
 }
