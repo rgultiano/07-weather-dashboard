@@ -53,7 +53,8 @@ function populateCurrentWeather({temp, wind_speed, humidity, uvi, dt, weather}, 
     $('.current-weather .wind').text(wind_speed);
     $('.current-weather .humidity').text(humidity);
     $('.current-weather .uvi').text(uvi);
-    $('.current-weather .wicon').attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png");
+    $('.current-weather .wicon').attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png").show().prop('display', 'inline');
+
 
     //color uvi
     if(uvi < 2){
@@ -100,6 +101,14 @@ function init(){
         }
     });
     $('#search').click(()=>getWeather(selectedCity));
+    // show nothing for all values
+    $('.search-results .city').text('');
+    $('.search-results .date').text('-');
+    $('.search-results .temp').text('-');
+    $('.search-results .wind').text('-');
+    $('.search-results .humidity').text('-');
+    $('.search-results .uvi').text('-');
+    $('.search-results .wicon').hide();
 }
 
 //init
