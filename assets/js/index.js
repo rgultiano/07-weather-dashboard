@@ -5,7 +5,7 @@ const searchHistory = [];
 
 
 async function getCitySearch(request, response){
-    const resp = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(request.term)}&limit=5&appid=${OW_API_KEY}`,{
+    const resp = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(request.term)}&limit=5&appid=${OW_API_KEY}`,{
         method: 'GET',
         mode: 'no-cors'
     });
@@ -80,7 +80,7 @@ function populateCurrentWeather({temp, wind_speed, humidity, uvi, dt, weather}, 
     $('.current-weather .wind').text(wind_speed);
     $('.current-weather .humidity').text(humidity);
     $('.current-weather .uvi').text(uvi);
-    $('.current-weather .wicon').attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png").show().prop('display', 'inline');
+    $('.current-weather .wicon').attr("src", "https://openweathermap.org/img/w/" + weather[0].icon + ".png").show().prop('display', 'inline');
 
 
     //color uvi
@@ -102,7 +102,7 @@ function populateWeatherResult({temp, wind_speed, humidity, dt, weather}, index)
     $(`.weather-result:eq(${index}) .temp`).text(temp.day);
     $(`.weather-result:eq(${index}) .wind`).text(wind_speed);
     $(`.weather-result:eq(${index}) .humidity`).text(humidity);
-    $(`.weather-result:eq(${index}) .wicon`).attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png").show();
+    $(`.weather-result:eq(${index}) .wicon`).attr("src", "https://openweathermap.org/img/w/" + weather[0].icon + ".png").show();
 }
 
 function processSelect(_, {item}){
