@@ -100,7 +100,7 @@ function populateWeatherResult({temp, wind_speed, humidity, dt, weather}, index)
     $(`.weather-result:eq(${index}) .temp`).text(temp.day);
     $(`.weather-result:eq(${index}) .wind`).text(wind_speed);
     $(`.weather-result:eq(${index}) .humidity`).text(humidity);
-    $(`.weather-result:eq(${index}) .wicon`).attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png");
+    $(`.weather-result:eq(${index}) .wicon`).attr("src", "http://openweathermap.org/img/w/" + weather[0].icon + ".png").show();
 }
 
 function processSelect(_, {item}){
