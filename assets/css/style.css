@@ -94,9 +94,30 @@ body{
     background-color: lightgray;
 }
 
+
 #search {
-    background-color: lightblue;
+    background-color: blue;
     color: white;
     border: none;
     
 }
+
+button:active  {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+     outline: none;
+  }
+
+  #search:active {
+    background: rgb(0, 102, 255);
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+     outline: none;
+  }
+
+  #search:disabled{
+      background-color: lightgrey;
+  }

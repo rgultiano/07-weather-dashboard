@@ -136,6 +136,9 @@ function init(){
     $('.search-results .uvi').text('-');
     $('.search-results .wicon').hide();
 
+    //disable search button to begin with
+    $('#search').prop('disabled', true);
+
     //load search history
     if(localStorage.getItem('searchHistory')){
         searchHistory.unshift(...JSON.parse(localStorage.getItem('searchHistory')));
